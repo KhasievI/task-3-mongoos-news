@@ -1,41 +1,14 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const newsSchema = mongoose.Schema({
-    title: String,
-    text: String,
-    categoryID: String,
+  title: String,
+  text: String,
+  category: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Category',
+  },
 });
 
+const News = mongoose.model("News", newsSchema);
 
-
-
-
-const news = mongoose.model('news', newsSchema)
-
-module.exports = news
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const mongoose = require("mongoose");
-
-// const studentSchema = mongoose.Schema({
-//   name: String,
-//   phone: String,
-//   age: Number,
-// });
-
-// const Student = mongoose.model('Student', studentSchema);
-
-// module.exports = Student;
+module.exports = News;

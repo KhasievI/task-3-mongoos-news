@@ -1,11 +1,14 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const commentToNewsSchema = mongoose.Schema({
-    nameComentatorSchema: String,
-    text: String,
-    idNewsToComment: String,
-})
+  nameComentatorSchema: String,
+  text: String,
+  news: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'News',
+  },
+});
 
-const commentToNews = mongoose.model('commentToNews', commentToNewsSchema)
+const CommentToNews = mongoose.model("CommentToNews", commentToNewsSchema);
 
-module.exports = commentToNews
+module.exports = CommentToNews;
